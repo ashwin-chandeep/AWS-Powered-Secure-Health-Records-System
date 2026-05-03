@@ -8,8 +8,7 @@ dist/
 *.iml
 .vscode/
 
-# Secrets - DO NOT COMMIT
-application.properties
+# Environment secrets - DO NOT COMMIT real credentials
 *.env
 .env*
 
