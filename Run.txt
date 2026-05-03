@@ -1,0 +1,7 @@
+cd backend
+mvn spring-boot:run
+
+
+cd clinic-management-system
+npm start
+# Open http://localhost:4200

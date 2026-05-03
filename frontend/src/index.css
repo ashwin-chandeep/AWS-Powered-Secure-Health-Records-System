@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — Design Tokens
+   ============================================================ */
+:root {
+  --bg-page:       #f8fafc;
+  --bg-sidebar:    #0f172a;
+  --bg-card:       #ffffff;
+  --border:        #e2e8f0;
+  --text-primary:  #0f172a;
+  --text-muted:    #64748b;
+  --brand:         #6366f1;
+  --brand-dark:    #4f46e5;
+  --accent:        #06b6d4;
+  --success:       #10b981;
+  --warning:       #f59e0b;
+  --danger:        #ef4444;
+  --radius-card:   1.25rem;
+  --radius-btn:    0.75rem;
+  --sidebar-w:     260px;
+  --transition:    0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  --bg-page:      #0b1120;
+  --bg-sidebar:   #060d1a;
+  --bg-card:      #131c2e;
+  --border:       #1e2d45;
+  --text-primary: #f1f5f9;
+  --text-muted:   #7c8fa6;
+}
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; }
+
+/* ============================================================
+   GLASS CARD UTILITY
+   ============================================================ */
+.glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 8px 32px rgba(99,102,241,0.10), 0 1px 2px rgba(0,0,0,0.04);
+}
+.dark .glass-card {
+  background: rgba(15,23,42,0.85);
+  border-color: rgba(255,255,255,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   SHIMMER SKELETON
+   ============================================================ */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 0%, #e2e8f0 30%, #f1f5f9 60%, #e2e8f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite linear;
+  border-radius: 0.5rem;
+}
+.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    #1e2d45 0%, #263548 30%, #1e2d45 60%, #263548 100%
+  );
+  background-size: 200% 100%;
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ============================================================
+   STATUS BADGE COLORS
+   ============================================================ */
+.badge-requested  { @apply bg-amber-100  text-amber-800  border border-amber-200; }
+.badge-accepted   { @apply bg-blue-100   text-blue-800   border border-blue-200; }
+.badge-completed  { @apply bg-emerald-100 text-emerald-800 border border-emerald-200; }
+.badge-rejected   { @apply bg-red-100    text-red-800    border border-red-200; }
+.badge-pending    { @apply bg-amber-100  text-amber-800  border border-amber-200; }
+.badge-approved   { @apply bg-emerald-100 text-emerald-800 border border-emerald-200; }
+.badge-failed     { @apply bg-red-100    text-red-800    border border-red-200; }
+.badge-refunded   { @apply bg-purple-100 text-purple-800 border border-purple-200; }
+
+/* ============================================================
+   PAGE ENTRY ANIMATION
+   ============================================================ */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ============================================================
+   SIDEBAR GRADIENT
+   ============================================================ */
+.sidebar-gradient {
+  background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 50%, #0c1024 100%);
+}
+
+/* ============================================================
+   INPUT BASE
+   ============================================================ */
+.input-base {
+  @apply w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900
+         placeholder-slate-400 outline-none text-sm font-medium
+         focus:border-brand-500 focus:ring-2 focus:ring-brand-200
+         transition-all duration-200;
+}
+.dark .input-base {
+  @apply bg-slate-800 border-slate-700 text-slate-100 placeholder-slate-500
+         focus:border-brand-400 focus:ring-brand-900;
+}
+
+/* ============================================================
+   BLOB BACKGROUND SHAPES
+   ============================================================ */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+}

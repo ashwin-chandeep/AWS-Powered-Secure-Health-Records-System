@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+target/
+dist/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Secrets - DO NOT COMMIT
+application.properties
+*.env
+.env*
+
+# Build outputs
+*.class
+*.jar
+*.war
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+logs/
